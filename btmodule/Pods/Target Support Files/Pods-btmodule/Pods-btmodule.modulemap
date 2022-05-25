@@ -1,0 +1,6 @@
+framework module Pods_btmodule {
+  umbrella header "Pods-btmodule-umbrella.h"
+
+  export *
+  module * { export * }
+}
