@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>dark</key>
+	<dict>
+		<key>bt_main_color</key>
+		<string>#DB0011</string>
+		<key>bt_bg_color</key>
+		<string>#0A0A0A</string>
+		<key>bt_bg_color_1</key>
+		<string>#1A1A1A</string>
+		<key>bt_bg_color_2</key>
+		<string>#262626</string>
+		<key>bt_text_color</key>
+		<string>#E6E6E6</string>
+		<key>bt_text_color_1</key>
+		<string>#999999</string>
+		<key>bt_text_color_2</key>
+		<string>#666666</string>
+		<key>bt_divider_color</key>
+		<string>#3D3D3D</string>
+		<key>bt_divider_color_1</key>
+		<string>#3D3D3D</string>
+		<key>bt_divider_color_2</key>
+		<string>#3D3D3D</string>
+		<key>bt_main_action_color</key>
+		<string>#DB0011</string>
+	</dict>
+	<key>default</key>
+	<dict>
+		<key>bt_main_color</key>
+		<string>#DB0011</string>
+		<key>bt_bg_color</key>
+		<string>#F2F2F2</string>
+		<key>bt_bg_color_1</key>
+		<string>#FFFFFF</string>
+		<key>bt_bg_color_2</key>
+		<string>#F2F2F2</string>
+		<key>bt_text_color</key>
+		<string>#111111</string>
+		<key>bt_text_color_1</key>
+		<string>#666666</string>
+		<key>bt_text_color_2</key>
+		<string>#999999</string>
+		<key>bt_divider_color</key>
+		<string>#E6E6E6</string>
+		<key>bt_divider_color_1</key>
+		<string>#E6E6E6</string>
+		<key>bt_divider_color_2</key>
+		<string>#E6E6E6</string>
+		<key>bt_main_action_color</key>
+		<string>#DB0011</string>
+	</dict>
+</dict>
+</plist>

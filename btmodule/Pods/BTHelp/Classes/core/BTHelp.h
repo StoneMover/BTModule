@@ -10,6 +10,19 @@
 #import <UIKit/UIKit.h>
 #import "BTUtils.h"
 #import "BTPermission.h"
+#import "BTTheme.h"
+#import "BTConfig.h"
+#import "UIFont+BTFont.h"
+#import "UILabel+BTLabel.h"
+#import "UIScrollView+BTScrollView.h"
+#import "UIView+BTConstraint.h"
+#import "UIView+BTViewTool.h"
+#import "UIImage+BTImage.h"
+#import "NSString+BTString.h"
+#import "NSDate+BTDate.h"
+#import "UIColor+BTColor.h"
+#import "UIViewController+BTDialog.h"
+#import "UIViewController+BTNavSet.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
