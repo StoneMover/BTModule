@@ -219,7 +219,7 @@
         };
         [cell.generalView initWidget:BTGeneralCellStyleJustTitle];
     }
-    cell.generalView.titleLabel.text = [NSString localizedStringWithFormat:@"%@ +%zd",model.countryCh,model.countryNum];
+    cell.generalView.titleLabel.text = [NSString stringWithFormat:@"%@ +%zd",model.countryCh,model.countryNum];
     return cell;
 }
 
