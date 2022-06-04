@@ -8,6 +8,7 @@
 #import "HomeVC.h"
 #import <BTWidgetView/BTGeneralCell.h>
 #import "BTAreaListVC.h"
+#import "chat/controller/ChatListVC.h"
 
 @interface HomeVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -25,7 +26,7 @@
     [self.pageLoadView initTableView];
     [self.pageLoadView registerTableViewCellWithClass:[BTGeneralCell class]];
     [self.pageLoadView setTableViewNoMoreEmptyLine];
-    [self.pageLoadView.dataArray addObjectsFromArray:@[@"地区选择"]];
+    [self.pageLoadView.dataArray addObjectsFromArray:@[@"地区选择",@"即时通讯聊天"]];
 }
 
 
@@ -77,6 +78,14 @@
         [self.navigationController pushViewController:vc animated:YES];
         return;
     }
+    
+    if (indexPath.row == 1) {
+        ChatListVC * vc=[ChatListVC new];
+        [self.navigationController pushViewController:vc animated:YES];
+        
+        return;
+    }
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

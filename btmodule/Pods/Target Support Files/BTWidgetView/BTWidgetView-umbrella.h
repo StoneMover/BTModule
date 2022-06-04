@@ -26,10 +26,10 @@
 #import "BTButton.h"
 #import "BTCameraView.h"
 #import "BTContentAutoView.h"
+#import "BTDividerLineView.h"
 #import "BTGeneralCell.h"
 #import "BTGridImgView.h"
 #import "BTLeadView.h"
-#import "BTLineView.h"
 #import "BTProgressView.h"
 #import "BTSlideView.h"
 #import "BTStarView.h"
@@ -41,6 +41,9 @@
 #import "BTStickyPageView.h"
 #import "BTSearchHeadView.h"
 #import "BTSearchView.h"
+#import "BTTabbarContentView.h"
+#import "BTTabbarLineTextView.h"
+#import "BTTabbarView.h"
 
 FOUNDATION_EXPORT double BTWidgetViewVersionNumber;
 FOUNDATION_EXPORT const unsigned char BTWidgetViewVersionString[];

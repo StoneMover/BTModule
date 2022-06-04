@@ -251,4 +251,24 @@
     return [NSString stringWithFormat:@"%ld",(long)number];
 }
 
+- (NSString *)bt_subWithClearStrWithStartIndex:(NSInteger)startIndex last:(NSInteger)last{
+    
+    NSString *newText = @"";
+    for (int i = 0; i < self.length; i ++) {
+        
+        NSString *itemString = [self substringWithRange:NSMakeRange(i, 1)];
+        if (i < startIndex) {
+            
+            newText = [newText stringByAppendingString:itemString];
+        }else if (i >= self.length - last) {
+            
+            newText = [newText stringByAppendingString:itemString];
+        }else {
+            
+            newText = [newText stringByAppendingString:@"*"];
+        }
+    }
+    return newText;
+}
+
 @end

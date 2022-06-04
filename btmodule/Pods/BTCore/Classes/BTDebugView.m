@@ -11,7 +11,9 @@
 #import <BTHelp/BTUtils.h>
 #import <BTHelp/UIView+BTViewTool.h>
 #import <BTHelp/UIColor+BTColor.h>
-
+#import <BTWidgetView/BTAlertView.h>
+#import <BTWidgetView/UIView+BTEasyDialog.h>
+#import <BTHelp/NSString+BTString.h>
 
 @interface BTDebugView()
 
@@ -22,6 +24,16 @@
 
 @implementation BTDebugView
 
++ (void)load{
+    BOOL isShowNext = [NSUserDefaults.standardUserDefaults boolForKey:@"BT_LOG_AUTO_OPEN"];
+    if (isShowNext) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self show];
+        });
+        
+    }
+}
+
 + (void)show{
     BTDebugView * view = [BTDebugView new];
     view.BTLeft = 20;
@@ -30,6 +42,16 @@
     [BTUtils.APP_WINDOW addSubview:view];
 }
 
++ (void)showNextOpen{
+    
+    [self show];
+    [NSUserDefaults.standardUserDefaults setBool:YES forKey:@"BT_LOG_AUTO_OPEN"];
+    [NSUserDefaults.standardUserDefaults synchronize];
+}
+
++ (BOOL)isShowNextOpen{
+    return [NSUserDefaults.standardUserDefaults boolForKey:@"BT_LOG_AUTO_OPEN"];
+}
 
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
@@ -105,7 +127,7 @@
         content = [content stringByAppendingString:@"\n\n"];
     }
     
-    content = [content stringByAppendingFormat:@"URL : %@\n\n",model.url];
+    content = [content stringByAppendingFormat:@"APIURL : %@\n\n",model.url];
     content = [content stringByAppendingFormat:@"IMGURL : %@\n\n",[BTUtils isEmpty:model.imgUrlStart] ? @"暂无" : model.imgUrlStart];
     NSString * otherStr = [BTUtils convertDictToJsonStr:model.otherDict];
     if ([otherStr isEqualToString:@"{}"] || [BTUtils isEmpty:otherStr]) {
@@ -113,6 +135,73 @@
     }
     content = [content stringByAppendingFormat:@"其它参数 : %@",otherStr];
     return content;
+}
+
+
+- (void)showCreateDialog{
+    BTApiCrateView * createView = [[BTApiCrateView alloc] initWithFrame:CGRectMake(0, 0, BTUtils.SCREEN_W - 10, 100)];
+    BTAlertView * alertView = [[BTAlertView alloc] initWithcontentView:createView];
+    alertView.labelTitle.text = @"新增API环境";
+    [alertView bt_showCenter].isNeedMoveFollowKeyboard = YES;
+    alertView.okBlock = ^BOOL{
+        if ([BTUtils isEmpty:createView.apiUrlField.text]) {
+            [BTToast showErrorInfo:@"api地址不能为空"];
+            return NO;
+        }
+        
+        NSString * apiId = [NSString stringWithFormat:@"自定义环境-%@",[NSString bt_randomStrWithLenth:3]];
+        BTEnvModel * model = [[BTEnvModel alloc] initCustomeTypeWithIdentify:apiId url:createView.apiUrlField.text];
+        
+        model.imgUrlStart = createView.imgUrlField.text;
+        
+        NSString * otherDictStr = createView.otherField.text;
+        if (![BTUtils isEmpty:otherDictStr]) {
+            model.otherDict = [otherDictStr bt_toDict];
+        }
+        [BTEnvMananger.share addModel:model];
+        [BTEnvMananger.share save];
+        
+        [self.pageLoadView.dataArray removeAllObjects];
+        [self.pageLoadView.dataArray addObjectsFromArray:[BTEnvMananger.share allEnv]];
+        [self.pageLoadView.tableView reloadData];
+        return YES;
+    };
+}
+
+- (void)showEditDialog:(BTEnvModel*)model{
+    BTApiCrateView * createView = [[BTApiCrateView alloc] initWithFrame:CGRectMake(0, 0, BTUtils.SCREEN_W - 10, 100)];
+    createView.apiUrlField.text = model.url;
+    createView.imgUrlField.text = model.imgUrlStart;
+    
+    NSString * otherStr = [BTUtils convertDictToJsonStr:model.otherDict];
+    if ([otherStr isEqualToString:@"{}"] || [BTUtils isEmpty:otherStr]) {
+        otherStr = @"";
+    }
+    createView.otherField.text = otherStr;
+    
+    BTAlertView * alertView = [[BTAlertView alloc] initWithcontentView:createView];
+    alertView.labelTitle.text = @"编辑API环境";
+    [alertView bt_showCenter].isNeedMoveFollowKeyboard = YES;
+    alertView.okBlock = ^BOOL{
+        if ([BTUtils isEmpty:createView.apiUrlField.text]) {
+            [BTToast showErrorInfo:@"api地址不能为空"];
+            return NO;
+        }
+        model.url = createView.apiUrlField.text;
+        model.imgUrlStart = createView.imgUrlField.text;
+        
+        NSString * otherDictStr = createView.otherField.text;
+        if (![BTUtils isEmpty:otherDictStr]) {
+            model.otherDict = [otherDictStr bt_toDict];
+        }
+        [BTEnvMananger.share addModel:model];
+        [BTEnvMananger.share save];
+        
+        [self.pageLoadView.dataArray removeAllObjects];
+        [self.pageLoadView.dataArray addObjectsFromArray:[BTEnvMananger.share allEnv]];
+        [self.pageLoadView.tableView reloadData];
+        return YES;
+    };
 }
 
 
@@ -149,7 +238,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     BTEnvModel * model = self.pageLoadView.dataArray[indexPath.row];
-    [self bt_showActionSheet:@"操作" msg:nil btns:@[@"复制",@"设置为当前环境"] block:^(NSInteger index) {
+    [self bt_showActionSheet:@"操作" msg:nil btns:@[@"复制",@"设置为当前环境",@"编辑",@"删除"] block:^(NSInteger index) {
         if (index == 0) {
             UIPasteboard.generalPasteboard.string = [self displayStr:model];
             [BTToast showSuccess:@"复制成功"];
@@ -158,9 +247,35 @@
         
         if (index == 1) {
             [BTEnvMananger.share selectWithId:model.identify];
-            [BTToast showSuccess:@"设置成功，请重启APP以重新加载数据"];
+            [BTToast showSuccess:@"设置成功，请重启APP以重新加载数据，必要时需要先退出当前账号"];
 //            [self.pageLoadView.dataArray removeAllObjects];
             [self.pageLoadView.tableView reloadData];
+            return;
+        }
+        
+        if (index == 2) {
+            [self showEditDialog:model];
+            return;
+        }
+        
+        if (index == 3) {
+            if (model.isSelect) {
+                [BTToast showWarning:@"不能删除当前环境"];
+                return;
+            }
+            
+            if (model.type != BTDebugTypeCustome) {
+                [BTToast showWarning:@"只能删除自定义环境"];
+                return;
+            }
+            
+            [BTEnvMananger.share addModel:model];
+            [BTEnvMananger.share deleteModel:model];
+            
+            [self.pageLoadView.dataArray removeAllObjects];
+            [self.pageLoadView.dataArray addObjectsFromArray:[BTEnvMananger.share allEnv]];
+            [self.pageLoadView.tableView reloadData];
+            
             return;
         }
         
@@ -193,6 +308,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self bt_initTitle:@"BTDebug"];
+    [self bt_initRightBarStr:@"更多"];
     self.view.backgroundColor = UIColor.bt_bg_color;
     self.delegate = self;
     self.dataSource = self;
@@ -200,16 +316,32 @@
     self.logVc = [BTLogVC new];
     self.apiVc = [BTApiVC new];
     
-    self.headView = [[BTPageHeadLabelView alloc] initWithFrame:CGRectMake(0, 0, BTUtils.SCREEN_W, 40) titles:@[@"本地日志",@"环境配置"] style:BTPageHeadViewStyleAverage];
+    self.headView = [[BTPageHeadLabelView alloc] initWithFrame:CGRectMake(0, 0, BTUtils.SCREEN_W, 40) titles:@[@"环境配置",@"本地日志"] style:BTPageHeadViewStyleAverage];
     self.headView.selectColor = UIColor.bt_main_color;
     [self.headView initViewIndicator:CGSizeMake(80, 1) corner:0 bgColor:self.headView.selectColor];
     [self reloadData];
 }
 - (void)bt_rightBarClick{
-    if ([[self rootView] pageNowIndex] == 0) {
+    if ([[self rootView] pageNowIndex] == 1) {
         [self.logVc bt_rightBarClick];
         return;
     }
+    
+    [self bt_showActionSheet:@"更多" msg:nil btns:@[@"新增API环境",@"下次启动关闭DebugView"] block:^(NSInteger index) {
+        if (index == 0) {
+            [self.apiVc showCreateDialog];
+            return;
+        }
+        
+        if (index == 1) {
+            [BTToast showSuccess:@"设置成功"];
+            [NSUserDefaults.standardUserDefaults setBool:NO forKey:@"BT_LOG_AUTO_OPEN"];
+            [NSUserDefaults.standardUserDefaults synchronize];
+            return;
+        }
+        
+    }];
+    
 }
 
 
@@ -219,7 +351,7 @@
 }
 
 - (UIViewController*)pageVc:(BTPageViewController*)pageVc vcForIndex:(NSInteger)index{
-    if (index == 0) {
+    if (index == 1) {
         return self.logVc;
     }
     
@@ -244,12 +376,7 @@
 }
 
 - (void)pageVc:(BTPageViewController*)pageView didShow:(NSInteger)index{
-    if (index == 0) {
-        [self bt_initRightBarStr:@"更多"];
-        return;
-    }
     
-    [self bt_initRightBarStr:@""];
 }
 
 - (void)pageVc:(BTPageViewController *)pageView didDismiss:(NSInteger)index{
@@ -261,3 +388,59 @@
 
 
 
+@implementation BTApiCrateView
+
+- (instancetype)initWithFrame:(CGRect)frame{
+    self = [super initWithFrame:frame];
+    self.apiUrlField = [BTTextField new];
+    self.imgUrlField = [BTTextField new];
+    self.otherField = [BTTextField new];
+    self.otherField.placeholder = @"必须为json格式";
+    
+    
+    [self createItemViewWithField:self.apiUrlField title:@"APIURL" top:20];
+    [self createItemViewWithField:self.imgUrlField title:@"IMGURL" top:20 + 45];
+    [self createItemViewWithField:self.otherField title:@"其它参数" top:20 + 90];
+    
+    self.BTHeight = 45 * 3 + 40;
+    
+    return self;
+}
+
+
+
+
+
+- (UIView*)createItemViewWithField:(BTTextField*)field title:(NSString*)title top:(CGFloat)top  {
+    
+    field.borderStyle = UITextBorderStyleLine;
+    
+    UIView * view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.BTWidth, 45)];
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    UILabel * label = [UILabel new];
+    label.translatesAutoresizingMaskIntoConstraints = NO;
+    label.text = title;
+    [view addSubview:label];
+    [label bt_addWidth:80];
+    [label bt_addLeftToParentWithPadding:10];
+    [label bt_addHeight:45];
+    [label bt_addCenterYToParent];
+    
+    
+    [view addSubview:field];
+    field.translatesAutoresizingMaskIntoConstraints = NO;
+    [field bt_addLeftToItemView:label constant:0];
+    [field bt_addRightToParentWithPadding:-10];
+    [field bt_addHeight:38];
+    [field bt_addCenterYToParent];
+    
+    [self addSubview:view];
+    [view bt_addLeftToParent];
+    [view bt_addRightToParent];
+    [view bt_addHeight:45];
+    [view bt_addTopToParentWithPadding:top];
+    return view;
+}
+
+@end

@@ -121,11 +121,11 @@
 }
 
 + (UIColor*)bt_bg_color1{
-    return [BTTheme colorWithName:@"bt_bg_color1"];
+    return [self bt_bg_color:1];
 }
 
 + (UIColor*)bt_bg_color2{
-    return [BTTheme colorWithName:@"bt_bg_color2"];
+    return [self bt_bg_color:2];
 }
 
 + (UIColor*)bt_bg_color:(NSInteger)index{
@@ -137,11 +137,11 @@
 }
 
 + (UIColor*)bt_text_color1{
-    return [BTTheme colorWithName:@"bt_text_color1"];
+    return [self bt_text_color:1];
 }
 
 + (UIColor*)bt_text_color2{
-    return [BTTheme colorWithName:@"bt_text_color2"];
+    return [self bt_text_color:2];
 }
 
 + (UIColor*)bt_text_color:(NSInteger)index{
@@ -153,11 +153,11 @@
 }
 
 + (UIColor*)bt_divider_color1{
-    return [BTTheme colorWithName:@"bt_divider_color1"];
+    return [self bt_divider_color:1];
 }
 
 + (UIColor*)bt_divider_color2{
-    return [BTTheme colorWithName:@"bt_divider_color2"];
+    return [self bt_divider_color:2];
 }
 
 + (UIColor*)bt_divider_color:(NSInteger)index{

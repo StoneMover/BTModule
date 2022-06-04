@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BTLineView.h"
+#import "BTDividerLineView.h"
 #import "BTTextField.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) BTTextField * textFieldSearch;
 
-@property (nonatomic, strong) BTLineView * viewLine;
+@property (nonatomic, strong) BTDividerLineView * viewLine;
 
 ///可以改变高度和左边距来调整UI图
 @property (nonatomic, strong) UIView * viewBgColor;

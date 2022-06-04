@@ -52,9 +52,9 @@
     self.imgSearchIcon.image = [BTWidgetView imageBundleName:@"bt_search_icon"];
 //    self.imgSearchIcon.contentMode = UIViewContentModeCenter;
     
-    self.viewLine = [[BTLineView alloc] initBTViewWithSize:CGSizeMake(self.BTWidth, 1)];
+    self.viewLine = [[BTDividerLineView alloc] initBTViewWithSize:CGSizeMake(self.BTWidth, 1)];
     self.viewLine.lineWidth = .5;
-    self.viewLine.aligntMent = BTLineViewAlignmentBottom;
+    self.viewLine.aligntMent = BTDividerLineViewAlignmentBottom;
     self.viewLine.color = UIColor.lightGrayColor;
     
     

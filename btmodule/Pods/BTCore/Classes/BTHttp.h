@@ -226,6 +226,12 @@ typedef void(^BTNetFailFullBlock)(NSError * _Nullable error,NSInteger code,NSStr
 + (void)defaultNetError:(NSError * _Nonnull)error fail:(BTNetFailBlock _Nullable)fail;
 + (void)defaultNetError:(NSError * _Nonnull)error failFull:(BTNetFailFullBlock _Nullable)failFull;
 
+#pragma mark 兼容5.0以前的老版本
++ (BOOL)isSuccess:(id  _Nullable)responseObject;
++ (NSMutableDictionary*)defaultDict;
++ (NSMutableDictionary*)defaultPageDict:(NSInteger)pageIndex;
++ (NSString *)errorInfo:(id  _Nullable)responseObject;
+
 @end
 
 

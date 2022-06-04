@@ -40,7 +40,7 @@ BTPaddingMake(CGFloat top, CGFloat bottom,CGFloat left,CGFloat right)
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class BTBTConstraintModel;
+@class BTConstraintModel;
 
 @interface UIView (BTConstraint)
 
@@ -134,18 +134,19 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark 其它
 //约束顺序为上下左右
 - (NSArray<NSLayoutConstraint*> *)bt_addToParentWithPadding:(BTPadding)padding;
+- (NSArray<NSLayoutConstraint*> *)bt_addToParentWithZeroPadding;
 
 #pragma mark 用model创建
-- (NSLayoutConstraint *)bt_addConstraint:(BTBTConstraintModel*)model
-             toItemModel:(BTBTConstraintModel*)toItemModel
+- (NSLayoutConstraint *)bt_addConstraint:(BTConstraintModel*)model
+             toItemModel:(BTConstraintModel*)toItemModel
               multiplier:(CGFloat)multiplier
                 constant:(CGFloat)c;
 
-- (NSLayoutConstraint *)bt_addConstraint:(BTBTConstraintModel*)model
-             toItemModel:(BTBTConstraintModel*)toItemModel;
+- (NSLayoutConstraint *)bt_addConstraint:(BTConstraintModel*)model
+             toItemModel:(BTConstraintModel*)toItemModel;
 
-- (NSLayoutConstraint *)bt_addConstraint:(BTBTConstraintModel*)model
-             toItemModel:(BTBTConstraintModel*)toItemModel
+- (NSLayoutConstraint *)bt_addConstraint:(BTConstraintModel*)model
+             toItemModel:(BTConstraintModel*)toItemModel
                 constant:(CGFloat)c;
 
 //- (void)bt_removeAllCon
@@ -154,7 +155,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-@interface BTBTConstraintModel : NSObject
+@interface BTConstraintModel : NSObject
 
 - (instancetype)initWithView:(UIView*)view attribute:(NSLayoutAttribute)attribute relation:(NSLayoutRelation)relation;
 

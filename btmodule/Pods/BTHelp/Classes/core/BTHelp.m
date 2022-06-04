@@ -716,6 +716,11 @@
 
 @implementation BTLog
 
++ (void)load{
+    [BTLog share];
+    
+}
+
 + (instancetype)share{
     static BTLog * log;
     static dispatch_once_t onceToken;
@@ -756,6 +761,30 @@
     
     [BTFileHelp createPath:self.logFilePath];
 //    NSLog(@"BTLogPath:%@",self.logFilePath);
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(appStart) name:UIApplicationDidFinishLaunchingNotification object:nil];
+    
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(appWillResignActive) name:UIApplicationWillResignActiveNotification object:nil];
+    
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(appWillEnterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
+    
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(appDidEnterForeground) name:UIApplicationDidEnterBackgroundNotification object:nil];
+    
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(appDidBecomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
+    
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(appWillTerminate) name:UIApplicationWillTerminateNotification object:nil];
+    
+}
+
++ (void)save:(NSString*)content{
+    [BTLog.share save:content];
+}
+
++ (void)saveError:(NSString*)content{
+    [BTLog.share saveError:content];
+}
+
++ (void)saveWarning:(NSString*)content{
+    [BTLog.share saveWarning:content];
 }
 
 
@@ -826,5 +855,149 @@
     NSString * content = @"";
     [BTFileHelp saveFileWithPath:BTFileHelp.documentPath fileName:@"btlog.txt" data:[content dataUsingEncoding:NSUTF8StringEncoding]];
 }
+
+#pragma mark 应用生命周期通知
+- (void)appStart{
+    [self save:@"应用打开"];
+    NSString * appInfo = [NSString stringWithFormat:@"版本号:%@;Build号:%@;",BTUtils.APP_VERSION,BTUtils.APP_BUILD_VERSION];
+    
+    
+    UIDevice * device = UIDevice.currentDevice;
+    NSString * deviceInfo = [NSString stringWithFormat:@"[运行信息]设备名称:%@-%@;设备类型:%@;本地化模式:%@;系统名称:%@;系统版本:%@;",device.name,BTUtils.PHONE_NAME,device.model,device.localizedModel,device.systemName,device.systemVersion];
+    
+    deviceInfo = [deviceInfo stringByAppendingFormat:@"设备尺寸:%.0fx%.0f;",BTUtils.SCREEN_H,BTUtils.SCREEN_W];
+    deviceInfo = [deviceInfo stringByAppendingString:appInfo];
+    [self save:deviceInfo];
+}
+
+- (void)appWillResignActive{
+    [self save:@"应用将要挂起"];
+}
+
+- (void)appWillEnterForeground{
+    [self save:@"应用将要进入后台"];
+}
+
+- (void)appDidEnterForeground{
+    [self save:@"应用已经进入后台"];
+}
+
+- (void)appDidBecomeActive{
+    [self save:@"应用进入前台运行"];
+}
+
+- (void)appWillTerminate{
+    [self save:@"应用即将结束"];
+}
+
+@end
+
+
+
+@interface BTAttributedStringHelp()
+
+@property (nonatomic, strong) NSString * originStr;
+
+@property (nonatomic, strong) NSMutableAttributedString * attributedString;
+
+@end
+
+
+@implementation BTAttributedStringHelp
+
+- (instancetype)initWithStr:(NSString*)str{
+    self = [super init];
+    self.originStr = str;
+    self.attributedString = [[NSMutableAttributedString alloc] initWithString:str];
+    return self;
+}
+
+- (void)attributedFont:(UIFont*)font str:(NSString*)str{
+    [self attributedFont:font range:[self.originStr rangeOfString:str]];
+}
+
+- (void)attributedFont:(UIFont*)font range:(NSRange)range{
+    [self.attributedString addAttribute:NSFontAttributeName value:font range:range];
+}
+
+//设置文字颜色
+- (void)attributedColor:(UIColor*)color str:(NSString*)str{
+    [self attributedColor:color range:[self.originStr rangeOfString:str]];
+}
+
+- (void)attributedColor:(UIColor*)color range:(NSRange)range{
+    [self.attributedString addAttribute:NSForegroundColorAttributeName value:color range:range];
+}
+
+//设置文字背景颜色
+- (void)attributedBgColor:(UIColor*)color range:(NSRange)range{
+    [self.attributedString addAttribute:NSBackgroundColorAttributeName value:color range:range];
+}
+
+- (void)attributedBgColor:(UIColor*)color str:(NSString*)str{
+    [self attributedBgColor:color range:[self.originStr rangeOfString:str]];
+}
+
+
+//设置字体文字间距
+- (void)attributedKern:(NSNumber*)kern range:(NSRange)range{
+    [self.attributedString addAttribute:NSKernAttributeName value:kern range:range];
+}
+
+- (void)attributedKern:(NSNumber*)kern str:(NSString*)str{
+    [self attributedKern:kern range:[self.originStr rangeOfString:str]];
+}
+
+//设置删除线
+- (void)attributedDelLine:(UIColor*)color range:(NSRange)range{
+    [self.attributedString addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlineStyleSingle) range:range];
+    [self.attributedString addAttribute:NSStrikethroughColorAttributeName value:color range:range];
+}
+
+- (void)attributedDelLine:(UIColor*)color str:(NSString*)str{
+    [self attributedDelLine:color range:[self.originStr rangeOfString:str]];
+}
+
+//设置下划线
+- (void)attributedUnderLine:(UIColor*)color range:(NSRange)range{
+    [self.attributedString addAttribute:NSUnderlineStyleAttributeName value:@(NSUnderlineStyleSingle) range:range];
+    [self.attributedString addAttribute:NSUnderlineColorAttributeName value:color range:range];
+}
+
+- (void)attributedUnderLine:(UIColor*)color str:(NSString*)str{
+    [self attributedUnderLine:color range:[self.originStr rangeOfString:str]];
+}
+
+//设置超链接
+- (void)attributedLink:(NSURL*)url range:(NSRange)range{
+    [self.attributedString addAttribute:NSLinkAttributeName value:url range:range];
+}
+
+- (void)attributedLink:(NSURL*)url str:(NSString*)str{
+    [self attributedLink:url range:[self.originStr rangeOfString:str]];
+}
+
+/**
+ 设置两端对齐
+ 需要验证是否需要NSUnderlineStyleAttributeName:NSUnderlineStyleNone
+ NSDictionary *dic = @{NSParagraphStyleAttributeName: para,NSUnderlineStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleNone]};
+ */
+- (void)attributedAlignStartEnd{
+    NSMutableParagraphStyle *para = [[NSMutableParagraphStyle alloc]init];
+    //设置文字两端对齐
+    para.alignment = NSTextAlignmentJustified;
+    NSDictionary *dic = @{NSParagraphStyleAttributeName: para};
+    [self.attributedString setAttributes:dic range:NSMakeRange(0, self.attributedString.length)];
+}
+
+- (void)setlineSpacing:(CGFloat)lineSpacing{
+    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+    paragraphStyle.lineSpacing = lineSpacing;
+    NSMutableDictionary * dict = [NSMutableDictionary dictionary];
+    [dict setObject:paragraphStyle forKey:NSParagraphStyleAttributeName];
+    [self.attributedString setAttributes:dict range:NSMakeRange(0, self.attributedString.length)];
+}
+
+
 
 @end

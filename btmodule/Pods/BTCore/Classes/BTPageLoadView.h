@@ -180,7 +180,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark 自动加载逻辑
 
 //成功传入数据自动解析
-- (void)autoLoadSuccess:(NSArray* _Nullable)dataArrayDict modelCla:(Class)cls;
+- (void)autoLoadSuccess:(NSArray<NSDictionary*> * _Nullable)dataArrayDict modelCla:(Class)cls;
 
 //成功传入已经解析好的数组
 - (void)autoLoadSuccess:(NSArray * _Nullable)dataArray;
@@ -239,6 +239,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 //当scrollView的代理滑动的时候调用如下方法，则可实现头部图片缩放功能
 - (void)bt_scrollViewDidScroll:(UIScrollView*)scrollView;
+
+//是否为第一页数据的请求
+- (BOOL)isFirstPageRequest;
 
 @end
 

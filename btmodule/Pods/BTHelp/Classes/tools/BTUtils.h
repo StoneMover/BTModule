@@ -87,6 +87,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// 获取屏幕的大小值
 + (CGRect)SCREEN_BOUNDS;
 
+/// 获取设备名称例如IPhoneX
++ (NSString *)PHONE_NAME;
 
 /// 处理空字符串，如果为空则返回@"";
 + (NSString*)SAFE_STR:(nullable NSString*)str;

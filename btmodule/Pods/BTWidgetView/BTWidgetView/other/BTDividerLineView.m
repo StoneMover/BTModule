@@ -1,16 +1,16 @@
 //
-//  BTLineView.m
+//  BTDividerLineView.m
 //  huashi
 //
 //  Created by stonemover on 16/8/20.
 //  Copyright © 2016年 StoneMover. All rights reserved.
 //
 
-#import "BTLineView.h"
+#import "BTDividerLineView.h"
 #import <BTHelp/UIView+BTViewTool.h>
 
 
-@implementation BTLineView
+@implementation BTDividerLineView
 
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
@@ -27,29 +27,29 @@
     CGContextRef ctx=UIGraphicsGetCurrentContext();
     CGContextSetStrokeColorWithColor(ctx, strokeColor);
     
-    if (self.oriention==BTLineViewHoz) {
+    if (self.oriention==BTDividerLineViewHoz) {
         //水平情况
-        if(self.aligntMent==BTLineViewAlignmentTop){
+        if(self.aligntMent==BTDividerLineViewAlignmentTop){
             //居上的情况
             CGContextMoveToPoint(ctx, 0, self.lineWidth/2);
             CGContextAddLineToPoint(ctx, self.BTWidth, self.lineWidth/2);
-        }else if (self.aligntMent==BTLineViewAlignmentCenter){
+        }else if (self.aligntMent==BTDividerLineViewAlignmentCenter){
             CGContextMoveToPoint(ctx, 0, self.BTHeight/2.0);
             CGContextAddLineToPoint(ctx, self.BTWidth, self.BTHeight/2.0);
-        }else if (self.aligntMent==BTLineViewAlignmentBottom){
+        }else if (self.aligntMent==BTDividerLineViewAlignmentBottom){
             CGContextMoveToPoint(ctx, 0, self.BTHeight-self.lineWidth/2);
             CGContextAddLineToPoint(ctx, self.BTWidth, self.BTHeight-self.lineWidth/2);
         }
         
     }else{
         
-        if (self.aligntMent==BTLineViewAlignmentLeft) {
+        if (self.aligntMent==BTDividerLineViewAlignmentLeft) {
             CGContextMoveToPoint(ctx, self.lineWidth/2, 0);
             CGContextAddLineToPoint(ctx, self.lineWidth/2,self.BTHeight);
-        }else if (self.aligntMent==BTLineViewAlignmentCenter){
+        }else if (self.aligntMent==BTDividerLineViewAlignmentCenter){
             CGContextMoveToPoint(ctx, self.BTWidth/2.0, 0);
             CGContextAddLineToPoint(ctx, self.BTWidth/2.0,self.BTHeight);
-        }else if (self.aligntMent==BTLineViewAlignmentRight){
+        }else if (self.aligntMent==BTDividerLineViewAlignmentRight){
             CGContextMoveToPoint(ctx, self.BTWidth-self.lineWidth/2, 0);
             CGContextAddLineToPoint(ctx, self.BTWidth-self.lineWidth/2,self.BTHeight);
         }

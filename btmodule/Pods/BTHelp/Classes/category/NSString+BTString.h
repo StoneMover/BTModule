@@ -47,12 +47,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString*)bt_md5;
 
-//计算文字高度,传入文字的固定高度、字体、行间距参数
+///计算文字高度,传入文字的固定高度、字体、行间距参数
 - (CGFloat)bt_calculateStrHeight:(CGFloat)width font:(UIFont*)font;
 
 - (CGFloat)bt_calculateStrHeight:(CGFloat)width font:(UIFont*)font lineSpeace:(CGFloat)lineSpeace;
 
-//计算文字宽度，传入文字的固定高度
+///计算文字宽度，传入文字的固定高度
 - (CGFloat)bt_calculateStrWidth:(CGFloat)height font:(UIFont*)font;
 
 //将字典转为字符串
@@ -83,6 +83,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 ///获取随机的整数，包含from和to
 + (NSString *)bt_randomNum:(NSInteger)from to:(NSInteger)to;
+
+/// startIndex: 多少个字符串前可以看到,last多少个字符串后可以看到
+- (NSString *)bt_subWithClearStrWithStartIndex:(NSInteger)startIndex last:(NSInteger)last;
+
 
 @end
 

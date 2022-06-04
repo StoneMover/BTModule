@@ -574,6 +574,22 @@
     }
 }
 
++ (BOOL)isSuccess:(id  _Nullable)responseObject{
+    return [[self httpFilter] netSuccessFilter:nil response:responseObject];
+}
+
++ (NSMutableDictionary*)defaultDict{
+    return [[self httpFilter] netDefaultDict];
+}
+
++ (NSMutableDictionary*)defaultPageDict:(NSInteger)pageIndex{
+    return [[self httpFilter] netDefaultPageDict:pageIndex];
+}
+
++ (NSString *)errorInfo:(id  _Nullable)responseObject{
+    return [[self httpFilter] netInfoFilter:nil response:responseObject];
+}
+
 @end
 
 static BTGray * gray = nil;

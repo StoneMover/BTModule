@@ -1,5 +1,5 @@
 //
-//  BTLineView.h
+//  BTDividerLineView.h
 //  huashi
 //
 //  Created by stonemover on 16/8/20.
@@ -10,22 +10,22 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NS_ENUM(NSInteger,BTLineViewOrientation) {
-        BTLineViewHoz=0,
-        BTLineViewVer
+typedef NS_ENUM(NSInteger,BTDividerLineViewOrientation) {
+        BTDividerLineViewHoz=0,
+        BTDividerLineViewVer
 };
 
-typedef NS_ENUM(NSInteger,BTLineViewAlignment) {
-    BTLineViewAlignmentTop=0,
-    BTLineViewAlignmentCenter,
-    BTLineViewAlignmentBottom,
-    BTLineViewAlignmentLeft,
-    BTLineViewAlignmentRight
+typedef NS_ENUM(NSInteger,BTDividerLineViewAlignment) {
+    BTDividerLineViewAlignmentTop=0,
+    BTDividerLineViewAlignmentCenter,
+    BTDividerLineViewAlignmentBottom,
+    BTDividerLineViewAlignmentLeft,
+    BTDividerLineViewAlignmentRight
 };
 
 
 
-@interface BTLineView : UIView
+@interface BTDividerLineView : UIView
 
 //线的粗细,默认0.5,没有特殊要求不需要设置
 @property(nonatomic,assign) IBInspectable CGFloat lineWidth;

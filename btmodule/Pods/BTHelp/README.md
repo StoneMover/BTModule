@@ -31,6 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
+
+
 @interface TestChildModel : BTModel
 
 @property (nonatomic, strong) NSString * content;
@@ -50,7 +52,7 @@ NS_ASSUME_NONNULL_END
 
 - (void)initSelf{
     [super initSelf];
-    self.classDict = @{@"child":TestChildModel.class,@"childs":TestChildModel.class};
+     self.classDict = @{@"child":TestChildModel.class,@"childs":TestChildModel.class};
 }
 
 @end
@@ -85,6 +87,7 @@ NSLog(@"下个断点看有没有解析成功");
 
 
 ## BTTimerHelp
+
 
 一个基于```NSTimer```封装的计时器，如果你需要精准的计时器功能，使用```gcd```，该类会提供快捷的开始、暂停、结束、重设计时器回调间隔功能
 
@@ -213,11 +216,15 @@ self.iconHelp.block = ^(UIImage *image) {
 
 其它快捷使用方法见类中注释
 
+
+
 ## BTUtils
 
 工具类，集合常用方法，见注释
 
 ## BTDownloadMananger
+
+
 
 下载工具类，基于```NSURLSessionDownload```，在主动调用停止下载的情况下可以实现断点续传。无法实现断点续传情况：断网、杀掉应用
 
@@ -260,6 +267,7 @@ self.iconHelp.block = ^(UIImage *image) {
 ```
 [[BTDownloadMananger share] isDownloading:@"下载地址"];
 ```
+
 
 ## BTLocation
 定位工具类，待完善。

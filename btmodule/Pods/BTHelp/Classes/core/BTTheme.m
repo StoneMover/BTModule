@@ -159,6 +159,10 @@
     [self.colorDict setObject:color forKey:[theme stringByAppendingString:colorName]];
 }
 
+- (UIColor *)mainColor{
+    return [self colorWithName:@"bt_main_color"];
+}
+
 @end
 
 

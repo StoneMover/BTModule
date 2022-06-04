@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DDECFF6284BAA4900B9796D /* ChatListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDECFD7284BAA4900B9796D /* ChatListVC.m */; };
+		0DDECFF7284BAA4900B9796D /* ChatDetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDECFD8284BAA4900B9796D /* ChatDetVC.m */; };
+		0DDECFF8284BAA4900B9796D /* ChatFriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDECFDD284BAA4900B9796D /* ChatFriendModel.m */; };
+		0DDECFF9284BAA4900B9796D /* ChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDECFDE284BAA4900B9796D /* ChatModel.m */; };
+		0DDECFFA284BAA4900B9796D /* ChatDetBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDECFE0284BAA4900B9796D /* ChatDetBaseCell.m */; };
+		0DDECFFB284BAA4900B9796D /* ChatHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDECFE1284BAA4900B9796D /* ChatHeadView.m */; };
+		0DDECFFC284BAA4900B9796D /* ChatDetRefreshHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDECFE2284BAA4900B9796D /* ChatDetRefreshHeadView.m */; };
+		0DDECFFD284BAA4900B9796D /* ChatListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DDECFE3284BAA4900B9796D /* ChatListCell.xib */; };
+		0DDECFFE284BAA4900B9796D /* ChatDetTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDECFE4284BAA4900B9796D /* ChatDetTextCell.m */; };
+		0DDECFFF284BAA4900B9796D /* LiveChatEmojInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDECFE6284BAA4900B9796D /* LiveChatEmojInputView.m */; };
+		0DDED000284BAA4900B9796D /* ChatDetTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDECFEC284BAA4900B9796D /* ChatDetTimeCell.m */; };
+		0DDED001284BAA4900B9796D /* ChatListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDECFEE284BAA4900B9796D /* ChatListCell.m */; };
+		0DDED002284BAA4900B9796D /* EmojHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDECFF0284BAA4900B9796D /* EmojHelp.m */; };
+		0DDED003284BAA4900B9796D /* EmojTextAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDECFF1284BAA4900B9796D /* EmojTextAttachment.m */; };
+		0DDED004284BAA4900B9796D /* EmojPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDECFF2284BAA4900B9796D /* EmojPageView.m */; };
+		0DDED00E284BAB5400B9796D /* ZXObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDED008284BAB5400B9796D /* ZXObject.m */; };
+		0DDED00F284BAB5400B9796D /* BUIControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDED00A284BAB5400B9796D /* BUIControl.m */; };
+		0DDED010284BAB5400B9796D /* BUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDED00C284BAB5400B9796D /* BUIView.m */; };
+		0DDED013284BABDA00B9796D /* UserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDED012284BABDA00B9796D /* UserInfoModel.m */; };
 		226110EB283F4EEA00E30566 /* BTThemeColor.plist in Resources */ = {isa = PBXBuildFile; fileRef = 226110EA283F4EEA00E30566 /* BTThemeColor.plist */; };
 		226110EE283F513800E30566 /* BTAreaListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 226110ED283F513800E30566 /* BTAreaListVC.m */; };
 		226110F0283F522700E30566 /* areaData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 226110EF283F522700E30566 /* areaData.txt */; };
@@ -23,6 +42,44 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0DDECFD6284BAA4900B9796D /* ChatDetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatDetVC.h; sourceTree = "<group>"; };
+		0DDECFD7284BAA4900B9796D /* ChatListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatListVC.m; sourceTree = "<group>"; };
+		0DDECFD8284BAA4900B9796D /* ChatDetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatDetVC.m; sourceTree = "<group>"; };
+		0DDECFD9284BAA4900B9796D /* ChatListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatListVC.h; sourceTree = "<group>"; };
+		0DDECFDB284BAA4900B9796D /* ChatFriendModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatFriendModel.h; sourceTree = "<group>"; };
+		0DDECFDC284BAA4900B9796D /* ChatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatModel.h; sourceTree = "<group>"; };
+		0DDECFDD284BAA4900B9796D /* ChatFriendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatFriendModel.m; sourceTree = "<group>"; };
+		0DDECFDE284BAA4900B9796D /* ChatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatModel.m; sourceTree = "<group>"; };
+		0DDECFE0284BAA4900B9796D /* ChatDetBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatDetBaseCell.m; sourceTree = "<group>"; };
+		0DDECFE1284BAA4900B9796D /* ChatHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatHeadView.m; sourceTree = "<group>"; };
+		0DDECFE2284BAA4900B9796D /* ChatDetRefreshHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatDetRefreshHeadView.m; sourceTree = "<group>"; };
+		0DDECFE3284BAA4900B9796D /* ChatListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatListCell.xib; sourceTree = "<group>"; };
+		0DDECFE4284BAA4900B9796D /* ChatDetTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatDetTextCell.m; sourceTree = "<group>"; };
+		0DDECFE5284BAA4900B9796D /* ChatListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatListCell.h; sourceTree = "<group>"; };
+		0DDECFE6284BAA4900B9796D /* LiveChatEmojInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveChatEmojInputView.m; sourceTree = "<group>"; };
+		0DDECFE7284BAA4900B9796D /* ChatDetTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatDetTimeCell.h; sourceTree = "<group>"; };
+		0DDECFE8284BAA4900B9796D /* ChatDetBaseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatDetBaseCell.h; sourceTree = "<group>"; };
+		0DDECFE9284BAA4900B9796D /* ChatDetRefreshHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatDetRefreshHeadView.h; sourceTree = "<group>"; };
+		0DDECFEA284BAA4900B9796D /* ChatHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatHeadView.h; sourceTree = "<group>"; };
+		0DDECFEB284BAA4900B9796D /* ChatDetTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatDetTextCell.h; sourceTree = "<group>"; };
+		0DDECFEC284BAA4900B9796D /* ChatDetTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatDetTimeCell.m; sourceTree = "<group>"; };
+		0DDECFED284BAA4900B9796D /* LiveChatEmojInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveChatEmojInputView.h; sourceTree = "<group>"; };
+		0DDECFEE284BAA4900B9796D /* ChatListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatListCell.m; sourceTree = "<group>"; };
+		0DDECFF0284BAA4900B9796D /* EmojHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmojHelp.m; sourceTree = "<group>"; };
+		0DDECFF1284BAA4900B9796D /* EmojTextAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmojTextAttachment.m; sourceTree = "<group>"; };
+		0DDECFF2284BAA4900B9796D /* EmojPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmojPageView.m; sourceTree = "<group>"; };
+		0DDECFF3284BAA4900B9796D /* EmojHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmojHelp.h; sourceTree = "<group>"; };
+		0DDECFF4284BAA4900B9796D /* EmojTextAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmojTextAttachment.h; sourceTree = "<group>"; };
+		0DDECFF5284BAA4900B9796D /* EmojPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmojPageView.h; sourceTree = "<group>"; };
+		0DDED007284BAB5400B9796D /* BUIControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUIControl.h; sourceTree = "<group>"; };
+		0DDED008284BAB5400B9796D /* ZXObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXObject.m; sourceTree = "<group>"; };
+		0DDED009284BAB5400B9796D /* BUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUIView.h; sourceTree = "<group>"; };
+		0DDED00A284BAB5400B9796D /* BUIControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUIControl.m; sourceTree = "<group>"; };
+		0DDED00B284BAB5400B9796D /* ZXObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXObject.h; sourceTree = "<group>"; };
+		0DDED00C284BAB5400B9796D /* BUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUIView.m; sourceTree = "<group>"; };
+		0DDED00D284BAB5400B9796D /* BlockUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockUI.h; sourceTree = "<group>"; };
+		0DDED011284BABDA00B9796D /* UserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfoModel.h; sourceTree = "<group>"; };
+		0DDED012284BABDA00B9796D /* UserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfoModel.m; sourceTree = "<group>"; };
 		226110EA283F4EEA00E30566 /* BTThemeColor.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BTThemeColor.plist; sourceTree = "<group>"; };
 		226110EC283F513800E30566 /* BTAreaListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTAreaListVC.h; sourceTree = "<group>"; };
 		226110ED283F513800E30566 /* BTAreaListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BTAreaListVC.m; sourceTree = "<group>"; };
@@ -60,6 +117,98 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DDECFD4284BAA4900B9796D /* chat */ = {
+			isa = PBXGroup;
+			children = (
+				0DDECFD5284BAA4900B9796D /* controller */,
+				0DDECFDA284BAA4900B9796D /* model */,
+				0DDECFDF284BAA4900B9796D /* view */,
+				0DDECFEF284BAA4900B9796D /* emoj */,
+			);
+			path = chat;
+			sourceTree = "<group>";
+		};
+		0DDECFD5284BAA4900B9796D /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				0DDECFD6284BAA4900B9796D /* ChatDetVC.h */,
+				0DDECFD8284BAA4900B9796D /* ChatDetVC.m */,
+				0DDECFD9284BAA4900B9796D /* ChatListVC.h */,
+				0DDECFD7284BAA4900B9796D /* ChatListVC.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		0DDECFDA284BAA4900B9796D /* model */ = {
+			isa = PBXGroup;
+			children = (
+				0DDED011284BABDA00B9796D /* UserInfoModel.h */,
+				0DDED012284BABDA00B9796D /* UserInfoModel.m */,
+				0DDECFDB284BAA4900B9796D /* ChatFriendModel.h */,
+				0DDECFDD284BAA4900B9796D /* ChatFriendModel.m */,
+				0DDECFDC284BAA4900B9796D /* ChatModel.h */,
+				0DDECFDE284BAA4900B9796D /* ChatModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		0DDECFDF284BAA4900B9796D /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0DDECFE0284BAA4900B9796D /* ChatDetBaseCell.m */,
+				0DDECFE1284BAA4900B9796D /* ChatHeadView.m */,
+				0DDECFE2284BAA4900B9796D /* ChatDetRefreshHeadView.m */,
+				0DDECFE3284BAA4900B9796D /* ChatListCell.xib */,
+				0DDECFE4284BAA4900B9796D /* ChatDetTextCell.m */,
+				0DDECFE5284BAA4900B9796D /* ChatListCell.h */,
+				0DDECFE6284BAA4900B9796D /* LiveChatEmojInputView.m */,
+				0DDECFE7284BAA4900B9796D /* ChatDetTimeCell.h */,
+				0DDECFE8284BAA4900B9796D /* ChatDetBaseCell.h */,
+				0DDECFE9284BAA4900B9796D /* ChatDetRefreshHeadView.h */,
+				0DDECFEA284BAA4900B9796D /* ChatHeadView.h */,
+				0DDECFEB284BAA4900B9796D /* ChatDetTextCell.h */,
+				0DDECFEC284BAA4900B9796D /* ChatDetTimeCell.m */,
+				0DDECFED284BAA4900B9796D /* LiveChatEmojInputView.h */,
+				0DDECFEE284BAA4900B9796D /* ChatListCell.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0DDECFEF284BAA4900B9796D /* emoj */ = {
+			isa = PBXGroup;
+			children = (
+				0DDECFF3284BAA4900B9796D /* EmojHelp.h */,
+				0DDECFF0284BAA4900B9796D /* EmojHelp.m */,
+				0DDECFF4284BAA4900B9796D /* EmojTextAttachment.h */,
+				0DDECFF1284BAA4900B9796D /* EmojTextAttachment.m */,
+				0DDECFF5284BAA4900B9796D /* EmojPageView.h */,
+				0DDECFF2284BAA4900B9796D /* EmojPageView.m */,
+			);
+			path = emoj;
+			sourceTree = "<group>";
+		};
+		0DDED005284BAB4800B9796D /* thirdLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				0DDED006284BAB5400B9796D /* BlockUI */,
+			);
+			path = thirdLibrary;
+			sourceTree = "<group>";
+		};
+		0DDED006284BAB5400B9796D /* BlockUI */ = {
+			isa = PBXGroup;
+			children = (
+				0DDED007284BAB5400B9796D /* BUIControl.h */,
+				0DDED008284BAB5400B9796D /* ZXObject.m */,
+				0DDED009284BAB5400B9796D /* BUIView.h */,
+				0DDED00A284BAB5400B9796D /* BUIControl.m */,
+				0DDED00B284BAB5400B9796D /* ZXObject.h */,
+				0DDED00C284BAB5400B9796D /* BUIView.m */,
+				0DDED00D284BAB5400B9796D /* BlockUI.h */,
+			);
+			path = BlockUI;
+			sourceTree = "<group>";
+		};
 		204E24E9C691483DF670DD6B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,7 +238,8 @@
 		22817AE3283E37D800E818C8 /* btmodule */ = {
 			isa = PBXGroup;
 			children = (
-				226110EA283F4EEA00E30566 /* BTThemeColor.plist */,
+				0DDED005284BAB4800B9796D /* thirdLibrary */,
+				0DDECFD4284BAA4900B9796D /* chat */,
 				22817B00283E3A2A00E818C8 /* areaSelect */,
 				22817AE4283E37D800E818C8 /* AppDelegate.h */,
 				22817AE5283E37D800E818C8 /* AppDelegate.m */,
@@ -101,6 +251,7 @@
 				22817AF0283E37D900E818C8 /* Assets.xcassets */,
 				22817AF2283E37D900E818C8 /* LaunchScreen.storyboard */,
 				22817AF5283E37D900E818C8 /* Info.plist */,
+				226110EA283F4EEA00E30566 /* BTThemeColor.plist */,
 				22817AF6283E37D900E818C8 /* main.m */,
 			);
 			path = btmodule;
@@ -193,6 +344,7 @@
 				22817AF4283E37D900E818C8 /* LaunchScreen.storyboard in Resources */,
 				22817AF1283E37D900E818C8 /* Assets.xcassets in Resources */,
 				22817AEF283E37D800E818C8 /* Main.storyboard in Resources */,
+				0DDECFFD284BAA4900B9796D /* ChatListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,12 +398,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				22817AEC283E37D800E818C8 /* ViewController.m in Sources */,
+				0DDED013284BABDA00B9796D /* UserInfoModel.m in Sources */,
 				226110EE283F513800E30566 /* BTAreaListVC.m in Sources */,
 				226110F3283F546E00E30566 /* BTAreaModel.m in Sources */,
+				0DDED00F284BAB5400B9796D /* BUIControl.m in Sources */,
+				0DDED001284BAA4900B9796D /* ChatListCell.m in Sources */,
 				226110F6283F69C300E30566 /* BTAreaSectionView.m in Sources */,
+				0DDECFF6284BAA4900B9796D /* ChatListVC.m in Sources */,
+				0DDED010284BAB5400B9796D /* BUIView.m in Sources */,
 				22817AFF283E395300E818C8 /* HomeVC.m in Sources */,
+				0DDED002284BAA4900B9796D /* EmojHelp.m in Sources */,
+				0DDED004284BAA4900B9796D /* EmojPageView.m in Sources */,
+				0DDED000284BAA4900B9796D /* ChatDetTimeCell.m in Sources */,
+				0DDED00E284BAB5400B9796D /* ZXObject.m in Sources */,
+				0DDECFFB284BAA4900B9796D /* ChatHeadView.m in Sources */,
+				0DDECFF7284BAA4900B9796D /* ChatDetVC.m in Sources */,
+				0DDECFFF284BAA4900B9796D /* LiveChatEmojInputView.m in Sources */,
+				0DDED003284BAA4900B9796D /* EmojTextAttachment.m in Sources */,
+				0DDECFF9284BAA4900B9796D /* ChatModel.m in Sources */,
+				0DDECFFA284BAA4900B9796D /* ChatDetBaseCell.m in Sources */,
+				0DDECFFC284BAA4900B9796D /* ChatDetRefreshHeadView.m in Sources */,
 				22817AE6283E37D800E818C8 /* AppDelegate.m in Sources */,
 				22817AF7283E37D900E818C8 /* main.m in Sources */,
+				0DDECFFE284BAA4900B9796D /* ChatDetTextCell.m in Sources */,
+				0DDECFF8284BAA4900B9796D /* ChatFriendModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

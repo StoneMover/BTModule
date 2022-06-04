@@ -7,7 +7,7 @@
 //
 
 #import "BTDialogView.h"
-#import "BTLineView.h"
+#import "BTDividerLineView.h"
 
 
 @class BTDialogTableHeadView;
@@ -63,7 +63,7 @@
 
 @property(strong, nonatomic) UILabel * labelTitle;//头部label
 
-@property(strong, nonatomic) BTLineView * lineView;//头部分割线
+@property(strong, nonatomic) BTDividerLineView * lineView;//头部分割线
 
 @end
 

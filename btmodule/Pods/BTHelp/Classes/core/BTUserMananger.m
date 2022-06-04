@@ -168,7 +168,7 @@ NSString * const KEY_IS_NO_WIFI_DOWNLOAD=@"KEY_IS_NO_WIFI_DOWNLOAD";
 }
 
 - (NSUserDefaults*)userDefaults{
-    return self.userDefaults;
+    return _userDefaults;
 }
 
 @end

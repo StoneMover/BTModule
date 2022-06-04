@@ -298,6 +298,14 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)share;
 
 /// 存储文件内容
++ (void)save:(NSString*)content;
+
++ (void)saveError:(NSString*)content;
+
++ (void)saveWarning:(NSString*)content;
+
+
+/// 存储文件内容
 - (void)save:(NSString*)content;
 
 - (void)saveError:(NSString*)content;
@@ -309,6 +317,60 @@ NS_ASSUME_NONNULL_BEGIN
 
 ///清除log数据
 - (void)clearLog;
+
+@end
+
+
+
+@interface BTAttributedStringHelp : NSObject
+
+- (instancetype)initWithStr:(NSString*)str;
+
+/// 设置字体
+- (void)attributedFont:(UIFont*)font str:(NSString*)str;
+
+- (void)attributedFont:(UIFont*)font range:(NSRange)range;
+
+/// 设置文字颜色
+- (void)attributedColor:(UIColor*)color str:(NSString*)str;
+
+- (void)attributedColor:(UIColor*)color range:(NSRange)range;
+
+/// 设置文字背景颜色
+- (void)attributedBgColor:(UIColor*)color range:(NSRange)range;
+
+- (void)attributedBgColor:(UIColor*)color str:(NSString*)str;
+
+
+/// 设置字体文字间距
+- (void)attributedKern:(NSNumber*)kern range:(NSRange)range;
+
+- (void)attributedKern:(NSNumber*)kern str:(NSString*)str;
+
+/// 设置删除线
+- (void)attributedDelLine:(UIColor*)color range:(NSRange)range;
+
+- (void)attributedDelLine:(UIColor*)color str:(NSString*)str;
+
+/// 设置下划线
+- (void)attributedUnderLine:(UIColor*)color range:(NSRange)range;
+
+- (void)attributedUnderLine:(UIColor*)color str:(NSString*)str;
+
+/// 设置超链接
+- (void)attributedLink:(NSURL*)url range:(NSRange)range;
+
+- (void)attributedLink:(NSURL*)url str:(NSString*)str;
+
+/**
+ 设置两端对齐
+ 需要验证是否需要NSUnderlineStyleAttributeName:NSUnderlineStyleNone
+ NSDictionary *dic = @{NSParagraphStyleAttributeName: para,NSUnderlineStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleNone]};
+ */
+- (void)attributedAlignStartEnd;
+
+/// 设置行间距
+- (void)setlineSpacing:(CGFloat)lineSpacing;
 
 @end
 

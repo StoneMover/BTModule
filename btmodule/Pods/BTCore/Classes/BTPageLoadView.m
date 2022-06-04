@@ -219,7 +219,7 @@
 
 #pragma mark 自动加载逻辑
 
-- (void)autoLoadSuccess:(NSArray* _Nullable)dataArrayDict modelCla:(Class)cls{
+- (void)autoLoadSuccess:(NSArray<NSDictionary*> * _Nullable)dataArrayDict modelCla:(Class)cls{
     if (dataArrayDict == nil || [dataArrayDict isKindOfClass:[NSNull class]]) {
         dataArrayDict = [NSArray new];
     }
@@ -252,30 +252,11 @@
     }
     
     [self.dataArray addObjectsFromArray:dataArray];
-    if (self.pageNumber == [self defaultFilter].pageLoadStartPage) {
+    if ([self isFirstPageRequest]) {
         if (self.loadingHelp.viewEmpty) {
-            if(dataArray.count==0){
-                if (self.delayShowEmptyViewTime == 0) {
-                    [self.loadingHelp showEmpty];
-                }else{
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.delayShowEmptyViewTime  * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        ///这里需要防止delaytime中数据再次刷新，在加一个对dataArray的判断
-                        if (self.dataArray.count == 0) {
-                            [self.loadingHelp showEmpty];
-                        }
-                        
-                    });
-                }
-                
-                _pageNumber--;
-            }else{
-                [self.loadingHelp dismiss];
-            }
+            [self doActionLoadingHelpEmpty:dataArray];
         }else{
-            if(dataArray.count==0){
-                _pageNumber--;
-                [self emptyDataToast];
-            }
+            [self doActionToastEmpty:dataArray];
         }
     }
     self.isLoadFinish = dataArray.count < self.loadFinishDataNum;
@@ -467,6 +448,54 @@
 }
 
 #pragma mark 相关辅助方法
+
+- (void)doActionToastEmpty:(NSArray*)dataArray{
+    if(dataArray.count != 0){
+        return;
+    }
+    
+    ///后面逻辑会执行pageNumber++，这里先减掉一个值，后面执行后又复位到第一页的值
+    _pageNumber--;
+    if (!self.isToastWhenDataEmpty) {
+        return;
+    }
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(BTPageLoadEmptyDataToast:)]) {
+        [self.delegate BTPageLoadEmptyDataToast:self];
+        return;
+    }
+    
+    if (self.isEmptyToastInCurrentVc) {
+        [BTToast showVc:@"暂无数据"];
+        return;
+    }
+    
+    [BTToast show:@"暂无数据"];
+    
+}
+
+- (void)doActionLoadingHelpEmpty:(NSArray*)dataArray{
+    if(dataArray.count != 0){
+        if (self.delayShowEmptyViewTime == 0) {
+            [self.loadingHelp showEmpty];
+        }else{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(self.delayShowEmptyViewTime  * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                ///这里需要防止delaytime中数据再次刷新，在加一个对dataArray的判断
+                if (self.dataArray.count == 0) {
+                    [self.loadingHelp showEmpty];
+                }
+                
+            });
+        }
+        ///后面逻辑会执行pageNumber++，这里先减掉一个值，后面执行后又复位到第一页的值
+        _pageNumber--;
+        
+        return;
+    }
+    
+    [self.loadingHelp dismiss];
+}
+
 - (NSMutableArray*)dataArray{
     if (_dataArray==nil) {
         _dataArray=[NSMutableArray new];
@@ -545,23 +574,6 @@
     }
 }
 
-- (void)emptyDataToast{
-    if (!self.isToastWhenDataEmpty) {
-        return;
-    }
-    
-    if (self.delegate && [self.delegate respondsToSelector:@selector(BTPageLoadEmptyDataToast:)]) {
-        [self.delegate BTPageLoadEmptyDataToast:self];
-        return;
-    }
-    
-    if (self.isEmptyToastInCurrentVc) {
-        [BTToast showVc:@"暂无数据"];
-        return;
-    }
-    
-    [BTToast show:@"暂无数据"];
-}
 
 - (void)setTableViewBounceHeadImgView:(NSString *)imgName height:(CGFloat)height{
     self.tableView.backgroundColor = UIColor.clearColor;
@@ -595,6 +607,10 @@
     }
     
     return [self.delegate BTPageLoadHttpConfig:self];
+}
+
+- (BOOL)isFirstPageRequest{
+    return self.pageNumber == [self defaultFilter].pageLoadStartPage;
 }
 
 @end

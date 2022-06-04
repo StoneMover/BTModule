@@ -17,14 +17,14 @@
 }
 
 - (NSLayoutConstraint *)bt_addWidth:(NSLayoutRelation)relation constant:(CGFloat)c{
-    BTBTConstraintModel * model = [[BTBTConstraintModel alloc] initWithView:self attribute:NSLayoutAttributeWidth relation:relation];
-    BTBTConstraintModel * toItemModel = [[BTBTConstraintModel alloc] initWithToItemView:nil attribute:NSLayoutAttributeNotAnAttribute];
+    BTConstraintModel * model = [[BTConstraintModel alloc] initWithView:self attribute:NSLayoutAttributeWidth relation:relation];
+    BTConstraintModel * toItemModel = [[BTConstraintModel alloc] initWithToItemView:nil attribute:NSLayoutAttributeNotAnAttribute];
     return [self bt_addConstraint:model toItemModel:toItemModel multiplier:1 constant:c];
 }
 
 - (NSLayoutConstraint *)bt_addEqualWidthToView:(UIView*)toView{
-    BTBTConstraintModel * model = [[BTBTConstraintModel alloc] initWithView:self attribute:NSLayoutAttributeWidth relation:NSLayoutRelationEqual];
-    BTBTConstraintModel * toItemModel = [[BTBTConstraintModel alloc] initWithToItemView:toView attribute:NSLayoutAttributeWidth];
+    BTConstraintModel * model = [[BTConstraintModel alloc] initWithView:self attribute:NSLayoutAttributeWidth relation:NSLayoutRelationEqual];
+    BTConstraintModel * toItemModel = [[BTConstraintModel alloc] initWithToItemView:toView attribute:NSLayoutAttributeWidth];
     return [self bt_addConstraint:model toItemModel:toItemModel multiplier:1 constant:0];
 }
 
@@ -35,14 +35,14 @@
 }
 
 - (NSLayoutConstraint *)bt_addHeight:(NSLayoutRelation)relation constant:(CGFloat)c{
-    BTBTConstraintModel * model = [[BTBTConstraintModel alloc] initWithView:self attribute:NSLayoutAttributeHeight relation:relation];
-    BTBTConstraintModel * toItemModel = [[BTBTConstraintModel alloc] initWithToItemView:nil attribute:NSLayoutAttributeNotAnAttribute];
+    BTConstraintModel * model = [[BTConstraintModel alloc] initWithView:self attribute:NSLayoutAttributeHeight relation:relation];
+    BTConstraintModel * toItemModel = [[BTConstraintModel alloc] initWithToItemView:nil attribute:NSLayoutAttributeNotAnAttribute];
     return [self bt_addConstraint:model toItemModel:toItemModel multiplier:1 constant:c];
 }
 
 - (NSLayoutConstraint *)bt_addEqualHeightToView:(UIView*)toView{
-    BTBTConstraintModel * model = [[BTBTConstraintModel alloc] initWithView:self attribute:NSLayoutAttributeHeight relation:NSLayoutRelationEqual];
-    BTBTConstraintModel * toItemModel = [[BTBTConstraintModel alloc] initWithToItemView:toView attribute:NSLayoutAttributeHeight];
+    BTConstraintModel * model = [[BTConstraintModel alloc] initWithView:self attribute:NSLayoutAttributeHeight relation:NSLayoutRelationEqual];
+    BTConstraintModel * toItemModel = [[BTConstraintModel alloc] initWithToItemView:toView attribute:NSLayoutAttributeHeight];
     return [self bt_addConstraint:model toItemModel:toItemModel multiplier:1 constant:0];
 }
 
@@ -79,8 +79,8 @@
                     constant:(CGFloat)c
                       isSame:(BOOL)isSame
 {
-    BTBTConstraintModel * model = [[BTBTConstraintModel alloc] initWithView:self attribute:NSLayoutAttributeLeading relation:NSLayoutRelationEqual];
-    BTBTConstraintModel * toItemModel = [[BTBTConstraintModel alloc] initWithToItemView:toItemView attribute:isSame?NSLayoutAttributeLeading:NSLayoutAttributeTrailing];
+    BTConstraintModel * model = [[BTConstraintModel alloc] initWithView:self attribute:NSLayoutAttributeLeading relation:NSLayoutRelationEqual];
+    BTConstraintModel * toItemModel = [[BTConstraintModel alloc] initWithToItemView:toItemView attribute:isSame?NSLayoutAttributeLeading:NSLayoutAttributeTrailing];
     return [self bt_addConstraint:model toItemModel:toItemModel multiplier:1 constant:c];
     
 }
@@ -121,8 +121,8 @@
 - (NSLayoutConstraint *)bt_addRightToItemView:(UIView*)toItemView constant:(CGFloat)c isSame:(BOOL)isSame
 {
     
-    BTBTConstraintModel * model = [[BTBTConstraintModel alloc] initWithView:self attribute:NSLayoutAttributeTrailing relation:NSLayoutRelationEqual];
-    BTBTConstraintModel * toItemModel = [[BTBTConstraintModel alloc] initWithToItemView:toItemView attribute:isSame?NSLayoutAttributeTrailing:NSLayoutAttributeLeading];
+    BTConstraintModel * model = [[BTConstraintModel alloc] initWithView:self attribute:NSLayoutAttributeTrailing relation:NSLayoutRelationEqual];
+    BTConstraintModel * toItemModel = [[BTConstraintModel alloc] initWithToItemView:toItemView attribute:isSame?NSLayoutAttributeTrailing:NSLayoutAttributeLeading];
     return [self bt_addConstraint:model toItemModel:toItemModel multiplier:1 constant:c];
 }
 #pragma mark top
@@ -156,8 +156,8 @@
 
 - (NSLayoutConstraint *)bt_addTopToItemView:(UIView*)toItemView constant:(CGFloat)c isSame:(BOOL)isSame
 {
-    BTBTConstraintModel * model = [[BTBTConstraintModel alloc] initWithView:self attribute:NSLayoutAttributeTop relation:NSLayoutRelationEqual];
-    BTBTConstraintModel * toItemModel = [[BTBTConstraintModel alloc] initWithToItemView:toItemView attribute:isSame?NSLayoutAttributeTop:NSLayoutAttributeBottom];
+    BTConstraintModel * model = [[BTConstraintModel alloc] initWithView:self attribute:NSLayoutAttributeTop relation:NSLayoutRelationEqual];
+    BTConstraintModel * toItemModel = [[BTConstraintModel alloc] initWithToItemView:toItemView attribute:isSame?NSLayoutAttributeTop:NSLayoutAttributeBottom];
     return [self bt_addConstraint:model toItemModel:toItemModel multiplier:1 constant:c];
     
 }
@@ -194,8 +194,8 @@
 
 - (NSLayoutConstraint *)bt_addBottomToItemView:(UIView*)toItemView constant:(CGFloat)c isSame:(BOOL)isSame
 {
-    BTBTConstraintModel * model = [[BTBTConstraintModel alloc] initWithView:self attribute:NSLayoutAttributeBottom relation:NSLayoutRelationEqual];
-    BTBTConstraintModel * toItemModel = [[BTBTConstraintModel alloc] initWithToItemView:toItemView attribute:isSame?NSLayoutAttributeBottom:NSLayoutAttributeTop];
+    BTConstraintModel * model = [[BTConstraintModel alloc] initWithView:self attribute:NSLayoutAttributeBottom relation:NSLayoutRelationEqual];
+    BTConstraintModel * toItemModel = [[BTConstraintModel alloc] initWithToItemView:toItemView attribute:isSame?NSLayoutAttributeBottom:NSLayoutAttributeTop];
     return [self bt_addConstraint:model toItemModel:toItemModel multiplier:1 constant:c];
 }
 
@@ -211,8 +211,8 @@
 
 - (NSLayoutConstraint *)bt_addCenterXToItemView:(UIView*)toItemView  constant:(CGFloat)c{
     
-    BTBTConstraintModel * model = [[BTBTConstraintModel alloc] initWithView:self attribute:NSLayoutAttributeCenterX relation:NSLayoutRelationEqual];
-    BTBTConstraintModel * toItemModel = [[BTBTConstraintModel alloc] initWithToItemView:toItemView attribute:NSLayoutAttributeCenterX];
+    BTConstraintModel * model = [[BTConstraintModel alloc] initWithView:self attribute:NSLayoutAttributeCenterX relation:NSLayoutRelationEqual];
+    BTConstraintModel * toItemModel = [[BTConstraintModel alloc] initWithToItemView:toItemView attribute:NSLayoutAttributeCenterX];
     return [self bt_addConstraint:model toItemModel:toItemModel multiplier:1 constant:c];
 }
 
@@ -226,8 +226,8 @@
 }
 
 - (NSLayoutConstraint *)bt_addCenterYToItemView:(UIView*)toItemView  constant:(CGFloat)c{
-    BTBTConstraintModel * model = [[BTBTConstraintModel alloc] initWithView:self attribute:NSLayoutAttributeCenterY relation:NSLayoutRelationEqual];
-    BTBTConstraintModel * toItemModel = [[BTBTConstraintModel alloc] initWithToItemView:toItemView attribute:NSLayoutAttributeCenterY];
+    BTConstraintModel * model = [[BTConstraintModel alloc] initWithView:self attribute:NSLayoutAttributeCenterY relation:NSLayoutRelationEqual];
+    BTConstraintModel * toItemModel = [[BTConstraintModel alloc] initWithToItemView:toItemView attribute:NSLayoutAttributeCenterY];
     return [self bt_addConstraint:model toItemModel:toItemModel multiplier:1 constant:c];
 }
 
@@ -252,8 +252,12 @@
     return array;
 }
 
-- (NSLayoutConstraint *)bt_addConstraint:(BTBTConstraintModel*)model
-             toItemModel:(BTBTConstraintModel*)toItemModel
+- (NSArray<NSLayoutConstraint*> *)bt_addToParentWithZeroPadding{
+    return [self bt_addToParentWithPadding:BTPaddingMake(0, 0, 0, 0)];
+}
+
+- (NSLayoutConstraint *)bt_addConstraint:(BTConstraintModel*)model
+             toItemModel:(BTConstraintModel*)toItemModel
               multiplier:(CGFloat)multiplier
                 constant:(CGFloat)c{
     NSLayoutConstraint * constraint=[NSLayoutConstraint constraintWithItem:model.view
@@ -263,6 +267,7 @@
                                                                  attribute:toItemModel.attribute
                                                                 multiplier:multiplier
                                                                   constant:c];
+    self.translatesAutoresizingMaskIntoConstraints = NO;
     //增加空判断，去除两个果两个都为nil的情况
     BOOL isHadRemoveConstraint = NO;
     if (model.view.superview != nil && model.view.superview == toItemModel.view) {
@@ -281,16 +286,20 @@
     return constraint;
 }
 
-- (NSLayoutConstraint *)bt_addConstraint:(BTBTConstraintModel*)model
-             toItemModel:(BTBTConstraintModel*)toItemModel{
+- (NSLayoutConstraint *)bt_addConstraint:(BTConstraintModel*)model
+             toItemModel:(BTConstraintModel*)toItemModel{
     return [self bt_addConstraint:model toItemModel:toItemModel multiplier:1 constant:0];
 }
 
-- (NSLayoutConstraint *)bt_addConstraint:(BTBTConstraintModel*)model
-             toItemModel:(BTBTConstraintModel*)toItemModel
+- (NSLayoutConstraint *)bt_addConstraint:(BTConstraintModel*)model
+             toItemModel:(BTConstraintModel*)toItemModel
                 constant:(CGFloat)c{
     return [self bt_addConstraint:model toItemModel:toItemModel multiplier:1 constant:c];
 }
+
+//- (BTConstraintModel*)bt_constraintModelWithAttribute:(NSLayoutAttribute)attribute relation:(NSLayoutRelation)relation{
+//    BTConstraintModel * model = [[BTConstraintModel alloc] ini]
+//}
 
 - (BOOL)autoRemoveConstraint:(NSLayoutConstraint *)createConstraint inView:(UIView*)inView{
     for (NSLayoutConstraint * c in inView.constraints) {
@@ -307,7 +316,7 @@
 
 
 
-@implementation BTBTConstraintModel
+@implementation BTConstraintModel
 
 - (instancetype)initWithView:(UIView*)view attribute:(NSLayoutAttribute)attribute relation:(NSLayoutRelation)relation{
     self = [super init];
